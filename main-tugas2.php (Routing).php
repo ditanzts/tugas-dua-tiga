@@ -1,0 +1,55 @@
+<?php
+
+require 'functions.php'; 
+
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+
+
+switch ($action) {
+    case 'admin':
+        admin();
+        break;
+    case 'dashboard':
+        dashboard();
+        break;
+    case 'customer-login':
+        customer_login();
+        break;
+    case 'customer-login-save':
+        customer_login_save();
+        break;
+    case 'customer-register':
+        customer_register();
+        break;
+    case 'customer-register-save':
+        customer_register_save();
+        break;
+    case 'customer-profile':
+        customer_profile();
+        break;
+    case 'customer-profile-edited':
+        customer_profile_edited();
+        break;
+    case 'item':
+        if (isset($_GET['id'])) {
+            item($_GET['id']);
+        } else {
+            // Handle kesalahan jika ID item tidak ada
+            display_error("Item not found.");
+        }
+        break;
+    case 'cart':
+        cart();
+        break;
+    case 'order':
+        order();
+    case 'contact':
+        contact();
+        break;
+    case 'logout':
+        logout();
+        break;
+    default:
+        echo "Halaman Utama";
+        break;
+}
